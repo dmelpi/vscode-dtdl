@@ -5,6 +5,8 @@
  * Event type for telemetry
  */
 export enum EventType {
-  CreateInterface = "vscode-dtdl.createInterface",
+  CreateInterface = "vespucci-dtdl.createInterface",
+  AddSensorInterface = "vespucci-dtdl.addSensorInterface",
+  AddFirmwareInterface = "vespucci-dtdl.addFirmwareInterface",
   OpenModelFile = "openModelFile"
 }

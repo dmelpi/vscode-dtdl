@@ -26,7 +26,7 @@ export class DeviceModelManager {
    * @param name model name
    */
   public static generateModelId(name: string): string {
-    return `dtmi:com:example:${name};1`;
+    return `dtmi:appconfig:${name};1`;
   }
 
   /**
@@ -65,6 +65,23 @@ export class DeviceModelManager {
     await UI.openAndShowTextDocument(filePath);
     UI.showNotification(MessageType.Info, ColorizedChannel.formatMessage(operation));
     this.outputChannel.end(operation, this.component);
+  }
+
+  public async addSensorInterface(name: string): Promise<void> {
+    const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
+    const template: string = path.join(
+      this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER)),
+      "sensor.json"
+    );
+
+    const operation = `Create "${name}" in folder ${folder} by template "${template}"`;
+    let filePath: string;
+    try {
+      filePath = await this.doCreateModel(folder, name, template);
+    } catch (error) {
+      throw new ProcessError(operation, error, this.component);
+    }
+    await UI.openAndShowTextDocument(filePath);
   }
 
   /**

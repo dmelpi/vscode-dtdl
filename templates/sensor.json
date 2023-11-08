@@ -1,0 +1,28 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:sensors:{modelName};1",
+  "@type": "Interface",
+  "displayName": "sensor",
+  "contents": [
+    {
+      "@type": "Telemetry",
+      "name": "temperature",
+      "displayName": { "en": "Temperature" },
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "samplingFrequency",
+      "displayName": { "en": "Sampling frequency [Hz]" },
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "fullScale",
+      "displayName": { "en": "Full scale" },
+      "schema": "integer",
+      "writable": true
+    }
+  ]
+}

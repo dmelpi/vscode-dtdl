@@ -1,9 +1,9 @@
 {
-  "name": "vscode-dtdl",
-  "displayName": "DTDL",
-  "description": "This extension provides syntax highlighting to read and edit JSON documents using the Digital Twins Definition Language",
+  "name": "vespucci-dtdl",
+  "displayName": "Vespucci DTDL",
+  "description": "This extension provides syntax highlighting to read and edit JSON documents using the Digital Twins Definition Language; it has been customized for the Vespucci project specific needs",
   "version": "1.4.1",
-  "publisher": "vsciot-vscode",
+  "publisher": "vespucci-vscode",
   "aiKey": "[AIKEY PLACEHOLDER]",
   "icon": "logo.png",
   "license": "MIT",
@@ -12,18 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/vscode-dtdl.git"
+    "url": "https://github.com/dmelpi/vscode-dtdl.git"
   },
   "bugs": {
-    "url": "https://github.com/Microsoft/vscode-dtdl/issues"
+    "url": "https://github.com/dmelpi/vscode-dtdl/issues"
   },
-  "homepage": "https://github.com/Microsoft/vscode-dtdl/blob/main/README.md",
+  "homepage": "https://github.com/dmelpi/vscode-dtdl/blob/main/README.md",
   "categories": [
     "Azure",
     "Snippets"
   ],
   "activationEvents": [
-    "onCommand:vscode-dtdl.createInterface",
+    "onCommand:vespucci-dtdl.createInterface",
     "onLanguage:json",
     "workspaceContains:**/*.json"
   ],
@@ -31,9 +31,29 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-dtdl.createInterface",
-        "title": "Create Interface",
-        "category": "DTDL"
+        "command": "vespucci-dtdl.createInterface",
+        "title": "Create New Device Model",
+        "category": "Vespucci DTDL"
+      },
+      {
+        "command": "vespucci-dtdl.addSensorInterface",
+        "title": "Add Sensor Interface",
+        "category": "Vespucci DTDL"
+      },
+      {
+        "command": "vespucci-dtdl.addAlgoInterface",
+        "title": "Add Algorithm Interface",
+        "category": "Vespucci DTDL"
+      },
+      {
+        "command": "vespucci-dtdl.addFirmwareInterface",
+        "title": "Add Firmware Interface",
+        "category": "Vespucci DTDL"
+      },
+      {
+        "command": "vespucci-dtdl.addMobileAppInterface",
+        "title": "Add Mobile App Interface",
+        "category": "Vespucci DTDL"
       }
     ],
     "jsonValidation": [

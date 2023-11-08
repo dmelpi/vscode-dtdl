@@ -5,7 +5,7 @@
  * Common constants
  */
 export class Constants {
-  public static readonly CHANNEL_NAME = "DTDL";
+  public static readonly CHANNEL_NAME = "DTDL-Vespucci";
   public static readonly UTF8 = "utf8";
   public static readonly EMPTY_STRING = "";
   public static readonly JSON_SPACE = 2;

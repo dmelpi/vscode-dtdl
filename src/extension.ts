@@ -12,6 +12,7 @@ import { UserCancelledError } from "./common/userCancelledError";
 import { DeviceModelManager, ModelType } from "./deviceModel/deviceModelManager";
 import { MessageType, UI } from "./view/ui";
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
+import * as child from "child_process";
 
 let client: LanguageClient;
 
@@ -105,6 +106,37 @@ export function activate(context: vscode.ExtensionContext): void {
       return deviceModelManager.createModel(ModelType.Interface);
     }
   );
+
+  initCommand(
+    context,
+    telemetryClient,
+    outputChannel,
+    EventType.AddSensorInterface,
+    async (): Promise<void> => {
+      return deviceModelManager.addSensorInterface("mysensor");
+    }
+  );
+
+  initCommand(
+    context,
+    telemetryClient,
+    outputChannel,
+    EventType.AddFirmwareInterface,
+    async (): Promise<void> => {
+      return addFirmwareInterface();
+    }
+  );
+}
+
+function addFirmwareInterface() {
+  console.log("Add firmware interface");
+  child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
+    console.log("stdout: " + stdout);
+    console.log("stderr: " + stderr);
+    if (err) {
+      console.log("error: " + err);
+    }
+  });
 }
 
 export function deactivate(): Thenable<void> | undefined {
