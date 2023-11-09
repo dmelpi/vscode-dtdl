@@ -101,7 +101,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context,
     telemetryClient,
     outputChannel,
-    EventType.CreateInterface,
+    EventType.CreateDeviceModel,
     async (): Promise<void> => {
       return deviceModelManager.createModel(ModelType.Interface);
     }
@@ -124,6 +124,16 @@ export function activate(context: vscode.ExtensionContext): void {
     EventType.AddControllerInterface,
     async (): Promise<void> => {
       return deviceModelManager.addInterface("controller", "myController");
+    }
+  );
+
+  initCommand(
+    context,
+    telemetryClient,
+    outputChannel,
+    EventType.AddAlgorithmInterface,
+    async (): Promise<void> => {
+      return deviceModelManager.addInterface("algorithm", "myAlgorithm");
     }
   );
 }

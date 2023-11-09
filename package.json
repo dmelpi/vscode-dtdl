@@ -23,7 +23,7 @@
     "Snippets"
   ],
   "activationEvents": [
-    "onCommand:vespucci-dtdl.createInterface",
+    "onCommand:vespucci-dtdl.createDeviceModel",
     "onLanguage:json",
     "workspaceContains:**/*.json"
   ],
@@ -31,7 +31,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "vespucci-dtdl.createInterface",
+        "command": "vespucci-dtdl.createDeviceModel",
         "title": "Create New Device Model",
         "category": "Vespucci DTDL"
       },
@@ -41,12 +41,12 @@
         "category": "Vespucci DTDL"
       },
       {
-        "command": "vespucci-dtdl.addAlgoInterface",
+        "command": "vespucci-dtdl.addAlgorithmInterface",
         "title": "Add Algorithm Interface",
         "category": "Vespucci DTDL"
       },
       {
-        "command": "vespucci-dtdl.addFirmwareInterface",
+        "command": "vespucci-dtdl.addControllerInterface",
         "title": "Add Firmware Interface",
         "category": "Vespucci DTDL"
       },

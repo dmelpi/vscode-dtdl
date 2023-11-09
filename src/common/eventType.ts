@@ -5,9 +5,10 @@
  * Event type for telemetry
  */
 export enum EventType {
-  CreateInterface = "vespucci-dtdl.createInterface",
+  CreateDeviceModel = "vespucci-dtdl.createDeviceModel",
   AddSensorInterface = "vespucci-dtdl.addSensorInterface",
   AddControllerInterface = "vespucci-dtdl.addControllerInterface",
   AddAlgorithmInterface = "vespucci-dtdl.addAlgorithmInterface",
+  AddTagsInterface = "vespucci-dtdl.addTagsInterface",
   OpenModelFile = "openModelFile"
 }
