@@ -5,6 +5,13 @@
   "displayName": "sensor",
   "contents": [
     {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Enabled" },
+      "schema": "boolean",
+      "writable": true
+    },
+    {
       "@type": "Telemetry",
       "name": "temperature",
       "displayName": { "en": "Temperature" },
@@ -19,10 +26,37 @@
     },
     {
       "@type": "Property",
-      "name": "fullScale",
-      "displayName": { "en": "Full scale" },
-      "schema": "integer",
+      "displayName": { "en": "FS" },
+      "name": "fs",
+      "schema": {
+          "@type": "Enum",
+          "displayName": { "en": "Enum" },
+          "enumValues": [
+              {
+                  "displayName": { "en": "+/- 2g" },
+                  "enumValue": 0,
+                  "name": "g2"
+              },
+              {
+                  "displayName": { "en": "+/- 4g" },
+                  "enumValue": 1,
+                  "name": "g4"
+              },
+              {
+                  "displayName": { "en": "+/- 8g" },
+                  "enumValue": 2,
+                  "name": "g8"
+              },
+              {
+                  "displayName": { "en": "+/- 16g" },
+                  "enumValue": 3,
+                  "name": "g16"
+              }
+          ],
+          "valueSchema": "integer"
+      },
+      "unit": "gForce",
       "writable": true
-    }
+  }
   ]
 }
