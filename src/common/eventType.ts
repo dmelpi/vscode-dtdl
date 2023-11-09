@@ -7,6 +7,7 @@
 export enum EventType {
   CreateInterface = "vespucci-dtdl.createInterface",
   AddSensorInterface = "vespucci-dtdl.addSensorInterface",
-  AddFirmwareInterface = "vespucci-dtdl.addFirmwareInterface",
+  AddControllerInterface = "vespucci-dtdl.addControllerInterface",
+  AddAlgorithmInterface = "vespucci-dtdl.addAlgorithmInterface",
   OpenModelFile = "openModelFile"
 }

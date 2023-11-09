@@ -121,15 +121,15 @@ export function activate(context: vscode.ExtensionContext): void {
     context,
     telemetryClient,
     outputChannel,
-    EventType.AddFirmwareInterface,
+    EventType.AddControllerInterface,
     async (): Promise<void> => {
-      return addFirmwareInterface();
+      return deviceModelManager.addInterface("controller", "myController");
     }
   );
 }
 
-function addFirmwareInterface() {
-  console.log("Add firmware interface");
+function validateModel() {
+  console.log("Validate model using dmr-client");
   child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
     console.log("stdout: " + stdout);
     console.log("stderr: " + stderr);

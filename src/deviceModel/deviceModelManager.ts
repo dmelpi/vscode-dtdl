@@ -68,11 +68,11 @@ export class DeviceModelManager {
   }
 
   //TODO make it parametric depending on interface type and select the appropriate template
-  public async addInterface(type: string, name: string): Promise<void> {
+  public async addInterface(interfaceType: string, name: string): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const template: string = path.join(
       this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER)),
-      "sensor.json"
+      interfaceType
     );
 
     const operation = `Create "${name}" in folder ${folder} by template "${template}"`;
