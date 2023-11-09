@@ -113,7 +113,7 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel,
     EventType.AddSensorInterface,
     async (): Promise<void> => {
-      return deviceModelManager.addInterface("sensor", "mySensor");
+      return deviceModelManager.addInterface("sensor.json", "mySensor");
     }
   );
 
@@ -123,7 +123,7 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel,
     EventType.AddControllerInterface,
     async (): Promise<void> => {
-      return deviceModelManager.addInterface("controller", "myController");
+      return deviceModelManager.addInterface("controller.json", "myController");
     }
   );
 
@@ -133,7 +133,7 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel,
     EventType.AddAlgorithmInterface,
     async (): Promise<void> => {
-      return deviceModelManager.addInterface("algorithm", "myAlgorithm");
+      return deviceModelManager.addInterface("algorithm.json", "myAlgorithm");
     }
   );
 }
