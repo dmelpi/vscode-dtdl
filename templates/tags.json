@@ -1,0 +1,102 @@
+{
+  "@id": "dtmi::other:tags_info;1",
+  "@type": "Interface",
+  "contents": [
+      {
+          "@type": [
+              "Property",
+              "NumberValue"
+          ],
+          "displayName": { "en": "Maximum Tag number per acquisition" },
+          "name": "max_tags_num",
+          "schema": "integer",
+          "writable": false
+      },
+      {
+          "@type": "Property",
+          "displayName": { "en": "Class 0" },
+          "name": "sw_tag0",
+          "schema": {
+              "@type": "Object",
+              "fields": [
+                  {
+                      "displayName": { "en": "Label" },
+                      "name": "label",
+                      "schema": "string"
+                  },
+                  {
+                      "displayName": { "en": "Enabled" },
+                      "name": "enabled",
+                      "schema": "boolean"
+                  },
+                  {
+                      "displayName": { "en": "Status" },
+                      "name": "status",
+                      "schema": "boolean"
+                  }
+              ]
+          },
+          "writable": true
+      },
+      {
+        "@type": "Property",
+        "displayName": { "en": "Class 1" },
+        "name": "sw_tag1",
+        "schema": {
+            "@type": "Object",
+            "fields": [
+                {
+                    "displayName": { "en": "Label" },
+                    "name": "label",
+                    "schema": "string"
+                },
+                {
+                    "displayName": { "en": "Enabled" },
+                    "name": "enabled",
+                    "schema": "boolean"
+                },
+                {
+                    "displayName": { "en": "Status" },
+                    "name": "status",
+                    "schema": "boolean"
+                }
+            ]
+        },
+        "writable": true
+    },
+    {
+      "@type": "Property",
+      "displayName": { "en": "Class 2" },
+      "name": "sw_tag2",
+      "schema": {
+          "@type": "Object",
+          "fields": [
+              {
+                  "displayName": { "en": "Label" },
+                  "name": "label",
+                  "schema": "string"
+              },
+              {
+                  "displayName": { "en": "Enabled" },
+                  "name": "enabled",
+                  "schema": "boolean"
+              },
+              {
+                  "displayName": { "en": "Status" },
+                  "name": "status",
+                  "schema": "boolean"
+              }
+          ]
+      },
+      "writable": true
+  }
+      
+  ],
+  "displayName": {
+      "en": "Tags Information"
+  },
+  "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+  ]
+}

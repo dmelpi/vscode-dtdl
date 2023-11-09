@@ -1,0 +1,61 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:controller:{modelName};1",
+  "@type": "Interface",
+  "displayName": { "en": "Controller" },
+  "description": "Example DTDL model for commands.",
+  "contents": [
+    {
+      "@type": "Command",
+      "name": "start",
+      "request": {
+        "@type": "CommandPayload",
+        "displayName": {
+            "en": "Log Interface"
+        },
+        "name": "interface",
+        "schema": {
+            "@type": "Enum",
+            "enumValues": [
+                {
+                    "displayName": { "en": "SD Card" },
+                    "enumValue": 0,
+                    "name": "sd_card"
+                },
+                {
+                    "displayName": { "en": "USB" },
+                    "enumValue": 1,
+                    "name": "usb"
+                },
+                {
+                  "displayName": { "en": "BLE" },
+                  "enumValue": 2,
+                  "name": "ble"
+              }
+            ],
+            "valueSchema": "integer"
+        }
+      }
+    },
+    {
+      "@type": "Command",
+      "name": "stop",
+      "request": {
+        "name": "delay",
+        "schema": "integer"
+      }
+    },
+    {
+      "@type": "Command",
+      "displayName": { "en": "Set Time" },
+      "name": "set_time",
+      "request": {
+          "@type": "CommandPayload",
+          "description": { "en": "yyyyMMdd_hh_mm_ss" },
+          "displayName": { "en": "datetime" },
+          "name": "datetime",
+          "schema": "string"
+      }
+    }
+  ]
+}
