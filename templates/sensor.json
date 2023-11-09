@@ -2,7 +2,8 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:sensors:{modelName};1",
   "@type": "Interface",
-  "displayName": "sensor",
+  "displayName": { "en": "Sensor" },
+  "description": "Example DTDL model for a single sensor.",
   "contents": [
     {
       "@type": "Property",
@@ -17,6 +18,29 @@
       "displayName": { "en": "Temperature" },
       "schema": "double"
     },
+    {
+      "@type": "Telemetry",
+      "displayName": { "en": "Acceleration Value {x, y, z} [mg]" },
+      "name": "acceleration",
+      "schema": {
+          "@type": "Object",
+          "displayName": { "en": "Single acceleration sample." },
+          "fields": [
+              {
+                  "name": "a_x",
+                  "schema": "double"
+              },
+              {
+                  "name": "a_y",
+                  "schema": "double"
+              },
+              {
+                  "name": "a_z",
+                  "schema": "double"
+              }
+          ]
+      }
+  },
     {
       "@type": "Property",
       "name": "samplingFrequency",
