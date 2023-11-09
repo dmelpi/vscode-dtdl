@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:sensors:{modelName};1",
+  "@id": "dtmi::sensors;1",
   "@type": "Interface",
   "displayName": { "en": "Sensor" },
   "description": "Example DTDL model for a single sensor.",

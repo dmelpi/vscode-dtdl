@@ -1,0 +1,14 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi::other:applications;1",
+  "@type": "Interface",
+  "displayName": "Mobile application control interface",
+  "description": "This interface allows a mobile app to render relevant information about the device.",
+  "contents": [
+    {
+      "@type": "Property",        
+      "name": "deviceStatus",
+      "schema": "string"
+    }
+  ]
+}
