@@ -49,15 +49,19 @@ export class DeviceModelManager {
    */
   public async createModel(type: ModelType): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
-    const name: string = await UI.inputModelName(UIConstants.INPUT_MODEL_NAME_LABEL, type, folder);
+    const boardName = await UI.showInputBox("Board name", "Board name");
+    const firmwareName = await UI.showInputBox("Firmware name", "Firmware name");
+    const name = `${boardName}:${firmwareName}`;
+    //const name: string = await UI.inputModelName(UIConstants.INPUT_MODEL_NAME_LABEL, type, folder);
     const templateFolder: string = this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER));
     const template: string = await UI.selectTemplateFile(UIConstants.SELECT_TEMPLATE_FILE_LABEL, templateFolder);
     const operation = `Create ${type} "${name}" in folder ${folder} by template "${template}"`;
     this.outputChannel.start(operation, this.component);
 
     let filePath: string;
+    const fileName = `${boardName}_${firmwareName}`;
     try {
-      filePath = await this.doCreateModel(folder, name, path.join(templateFolder, template));
+      filePath = await this.doCreateModel(folder, fileName, path.join(templateFolder, template));
     } catch (error) {
       throw new ProcessError(operation, error, this.component);
     }

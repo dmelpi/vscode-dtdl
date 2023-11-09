@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi::controller;1",
+  "@id": "dtmi:{{namespace}}::controller;1",
   "@type": "Interface",
   "displayName": { "en": "Controller" },
   "description": "Example DTDL model for commands.",

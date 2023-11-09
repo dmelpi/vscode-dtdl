@@ -138,6 +138,10 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 }
 
+function createExpandedModel() {
+  console.log("Creating expanded model with dmr-client tool");
+}
+
 function validateModel() {
   console.log("Validate model using dmr-client");
   child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
