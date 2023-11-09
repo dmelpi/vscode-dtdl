@@ -67,7 +67,8 @@ export class DeviceModelManager {
     this.outputChannel.end(operation, this.component);
   }
 
-  public async addSensorInterface(name: string): Promise<void> {
+  //TODO make it parametric depending on interface type and select the appropriate template
+  public async addInterface(type: string, name: string): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const template: string = path.join(
       this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER)),

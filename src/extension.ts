@@ -113,7 +113,7 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel,
     EventType.AddSensorInterface,
     async (): Promise<void> => {
-      return deviceModelManager.addSensorInterface("mysensor");
+      return deviceModelManager.addInterface("sensor", "mySensor");
     }
   );
 
