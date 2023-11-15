@@ -1,0 +1,40 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:{{namespace}}:output;1",
+  "@type": "Interface",
+  "displayName": { "en": "BLE Output Spec" },
+  "description": "Configuration of the raw PnPL BLE characteristic.",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Output Enabled" },
+      "schema": "boolean",
+      "writable": true,
+      "initialValue": false
+    },
+    {
+      "@type": "Property",
+      "name": "st_ble_stream",
+      "displayName": { "en": "BLE stream output coding configuration" },
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "timestamp",
+            "displayName": { "en": "Timestamp" },
+            "schema": "string",
+            "initialValue": "int32"
+          },
+          {
+            "name": "stream_id",
+            "displayName": { "en": "Stream Identifier"},
+            "schema": "string",
+            "initialValue": "uint8"
+          }
+        ]
+      },
+      "writable": false
+    }
+  ]
+}
