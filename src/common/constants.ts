@@ -19,7 +19,9 @@ export class Constants {
   public static readonly MODEL_NAME_REGEX = /^[A-Za-z_][A-Za-z0-9_]*$/;
   public static readonly MODEL_NAME_REGEX_DESCRIPTION = "alphanumeric and underscore, not start with number";
   public static readonly MODEL_ID_PLACEHOLDER = "{modelId}";
-  public static readonly MODEL_NAME_PLACEHOLDER = "{modelName}";
+  public static readonly MODEL_NAME_PLACEHOLDER = "{interfaceName}";
+  public static readonly MODEL_BOARD_PLACEHOLDER = "{board_name}";
+  public static readonly MODEL_FIRMWARE_PLACEHOLDER = "{firmware_name}";
 
   public static readonly EXTENSION_ACTIVATED_MSG = "extensionActivated";
   public static readonly NOT_EMPTY_MSG = "could not be empty";

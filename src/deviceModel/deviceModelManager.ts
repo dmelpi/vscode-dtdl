@@ -54,14 +54,20 @@ export class DeviceModelManager {
     const name = `${boardName}:${firmwareName}`;
     //const name: string = await UI.inputModelName(UIConstants.INPUT_MODEL_NAME_LABEL, type, folder);
     const templateFolder: string = this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER));
-    const template: string = await UI.selectTemplateFile(UIConstants.SELECT_TEMPLATE_FILE_LABEL, templateFolder);
+    const template = "device_model.json";
     const operation = `Create ${type} "${name}" in folder ${folder} by template "${template}"`;
     this.outputChannel.start(operation, this.component);
 
     let filePath: string;
     const fileName = `${boardName}_${firmwareName}`;
     try {
-      filePath = await this.doCreateModel(folder, fileName, path.join(templateFolder, template));
+      filePath = await this.doCreateVespucciModel(
+        folder,
+        boardName,
+        firmwareName,
+        fileName,
+        path.join(templateFolder, template)
+      );
     } catch (error) {
       throw new ProcessError(operation, error, this.component);
     }
@@ -101,6 +107,24 @@ export class DeviceModelManager {
     const replacement = new Map<string, string>();
     replacement.set(Constants.MODEL_ID_PLACEHOLDER, modelId);
     replacement.set(Constants.MODEL_NAME_PLACEHOLDER, name);
+    await Utility.createFileFromTemplate(templatePath, filePath, replacement);
+    return filePath;
+  }
+
+  private async doCreateVespucciModel(
+    folder: string,
+    board: string,
+    firmware: string,
+    name: string,
+    templatePath: string
+  ): Promise<string> {
+    const modelId: string = DeviceModelManager.generateModelId(name);
+    const filePath: string = path.join(folder, DeviceModelManager.generateModelFileName(name));
+    const replacement = new Map<string, string>();
+    replacement.set(Constants.MODEL_ID_PLACEHOLDER, modelId);
+    replacement.set(Constants.MODEL_NAME_PLACEHOLDER, name);
+    replacement.set(Constants.MODEL_BOARD_PLACEHOLDER, board);
+    replacement.set(Constants.MODEL_FIRMWARE_PLACEHOLDER, firmware);
     await Utility.createFileFromTemplate(templatePath, filePath, replacement);
     return filePath;
   }
