@@ -20,11 +20,11 @@
     ],
     "description": "Adds a DTDL Command"
   },
-  "Add Vespucci sensor" : {
-    "prefix": "vse",
+  "Add Vespucci component" : {
+    "prefix": "vco",
     "body" : [
-      "{\n\t\"@id\": \"dtmi:appconfig:${1:board_name}:${2:firmware_name}:sensors:${3|one,two,three|};1\",\n\t\"name\": \"$4\",\n\t\"schema\": $5\n}"
+      "{\n\t\"@type\": \"Component\",\n\t\"name\": \"$1\",\n\t\"schema\": \"dtmi:appconfig:${2:board_name}:${3:firmware_name}:$1;1\",\n\t\"displayName\": \"$1\"\n}"
     ],
-    "description": "Adds a Vespucci sensor interface"
+    "description": "Adds a Vespucci component"
   }
 }
