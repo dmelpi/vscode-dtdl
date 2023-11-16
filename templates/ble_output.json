@@ -21,20 +21,59 @@
         "@type": "Object",
         "fields": [
           {
-            "name": "timestamp",
-            "displayName": { "en": "Timestamp" },
-            "schema": "string",
-            "initialValue": "int32"
-          },
-          {
             "name": "stream_id",
             "displayName": { "en": "Stream Identifier"},
-            "schema": "string",
-            "initialValue": "uint8"
+            "schema": "integer",
+            "comment": "must be 1 byte"
+          },
+          {
+            "name": "timestamp",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "@type": "SchemaField",
+                  "name": "enable",
+                  "schema": "boolean"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "format",
+                  "schema": "string",
+                  "initialValue": "uint32"
+                }
+              ]
+            }
+          },
+          {
+            "name": "samples",
+            "comment": "vector of 20 samples, each one coded with 16 bits (was 12 before)",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "@type": "SchemaField",
+                  "name": "enable",
+                  "schema": "boolean"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "format",
+                  "schema": "string",
+                  "initialValue": "uint16"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "num_elements",
+                  "schema": "integer",
+                  "initialValue": 20
+                }
+              ]
+            }
           }
         ]
       },
-      "writable": false
+      "writable": true
     }
   ]
 }
