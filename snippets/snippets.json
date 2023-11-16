@@ -19,5 +19,12 @@
       "{\n\t\"@type\": \"Command\",\n\t\"name\": \"$1\"\n}"
     ],
     "description": "Adds a DTDL Command"
+  },
+  "Add Vespucci sensor" : {
+    "prefix": "vse",
+    "body" : [
+      "{\n\t\"@id\": \"dtmi:appconfig:${1:board_name}:${2:firmware_name}:sensors:${3|one,two,three|};1\",\n\t\"name\": \"$4\",\n\t\"schema\": $5\n}"
+    ],
+    "description": "Adds a Vespucci sensor interface"
   }
 }
