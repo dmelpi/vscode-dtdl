@@ -51,8 +51,9 @@ export class DeviceModelManager {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const boardName = await UI.showInputBox("Board name", "Board name");
     const firmwareName = await UI.showInputBox("Firmware name", "Firmware name");
+    await this.context.globalState.update("dtdl-board", boardName);
+    await this.context.globalState.update("dtdl-firmware", firmwareName);
     const name = `${boardName}:${firmwareName}`;
-    //const name: string = await UI.inputModelName(UIConstants.INPUT_MODEL_NAME_LABEL, type, folder);
     const templateFolder: string = this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER));
     const template = "device_model.json";
     const operation = `Create ${type} "${name}" in folder ${folder} by template "${template}"`;
@@ -78,17 +79,20 @@ export class DeviceModelManager {
   }
 
   //TODO make it parametric depending on interface type and select the appropriate template
-  public async addInterface(interfaceType: string, name: string): Promise<void> {
+  public async addInterface(interfaceType: string): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const template: string = path.join(
       this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER)),
       interfaceType
     );
+    const interfaceName = await UI.showInputBox("Interface name", "Interface name");
+    const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
+    const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
 
-    const operation = `Create "${name}" in folder ${folder} by template "${template}"`;
+    const operation = `Create "${interfaceName}" in folder ${folder} by template "${template}"`;
     let filePath: string;
     try {
-      filePath = await this.doCreateModel(folder, name, template);
+      filePath = await this.doCreateVespucciModel(folder, boardName, firmwareName, interfaceName, template);
     } catch (error) {
       throw new ProcessError(operation, error, this.component);
     }
