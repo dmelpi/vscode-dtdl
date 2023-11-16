@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:{{namespace}}:algorithms:{{interfaceName}};1",
+  "@id": "dtmi:appconfig:{{board_name}}:{{firmware_name}}:algorithms:{{interfaceName}};1",
   "@type": "Interface",
   "displayName": { "en": "Algorithm" },
   "description": "Example DTDL model for a single algorithm.",

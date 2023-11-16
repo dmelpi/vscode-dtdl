@@ -6,19 +6,19 @@
           "@type": "Component",
           "displayName": { "en": "Component 1" },
           "name": "component1",
-          "schema": "dtmi::component1;1"
+          "schema": "dtmi:appconfig:{{board_name}}:{{firmware_name}}:component1;1"
       },
       {
         "@type": "Component",
         "displayName": { "en": "Component 2" },
         "name": "component2",
-        "schema": "dtmi::component2;1"
+        "schema": "dtmi:appconfig:{{board_name}}:{{firmware_name}}:component2;1"
     },
     {
       "@type": "Component",
       "displayName": { "en": "Component 3" },
       "name": "component3",
-      "schema": "dtmi::component3;1"
+      "schema": "dtmi:appconfig:{{board_name}}:{{firmware_name}}:component3;1"
     }
   ]
 }

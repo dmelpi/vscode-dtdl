@@ -1,5 +1,5 @@
 {
-  "@id": "dtmi::other:tags_info;1",
+  "@id": "dtmi:appconfig:{{board_name}}:{{firmware_name}}:other:tags_info;1",
   "@type": "Interface",
   "contents": [
       {
