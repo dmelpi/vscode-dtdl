@@ -12,7 +12,6 @@ import { UserCancelledError } from "./common/userCancelledError";
 import { DeviceModelManager, ModelType } from "./deviceModel/deviceModelManager";
 import { MessageType, UI } from "./view/ui";
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
-import * as child from "child_process";
 
 let client: LanguageClient;
 
@@ -146,17 +145,6 @@ export function activate(context: vscode.ExtensionContext): void {
       return deviceModelManager.finalizeModel();
     }
   );
-}
-
-function validateModel() {
-  console.log("Validate model using dmr-client");
-  child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
-    console.log("stdout: " + stdout);
-    console.log("stderr: " + stderr);
-    if (err) {
-      console.log("error: " + err);
-    }
-  });
 }
 
 export function deactivate(): Thenable<void> | undefined {

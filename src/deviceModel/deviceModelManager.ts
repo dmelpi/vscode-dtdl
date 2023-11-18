@@ -9,6 +9,7 @@ import { ProcessError } from "../common/processError";
 import { Utility } from "../common/utility";
 import { MessageType, UI } from "../view/ui";
 import { UIConstants } from "../view/uiConstants";
+import * as child from "child_process";
 
 /**
  * DigitalTwin model type
@@ -134,9 +135,7 @@ export class DeviceModelManager {
   }
 
   public async finalizeModel(): Promise<void> {
-    if (vscode.workspace.workspaceFolders === undefined) return;
-
-    //const wf = vscode.workspace.workspaceFolders[0].uri.path;
+    //if (vscode.workspace.workspaceFolders === undefined) return;
     const files = await vscode.workspace.findFiles("**/*.json", "dtmi/**");
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
@@ -147,13 +146,34 @@ export class DeviceModelManager {
         const text = document.getText();
         const json = JSON.parse(text);
         if (!Array.isArray(json)) {
+          // discard exported json files
           if (json["@id"].includes(`${boardName}:${firmwareName}`)) {
             this.outputChannel.info(json["@id"]);
+            this.importModel(file.fsPath);
           }
         }
       });
     });
     this.outputChannel.end("Finalizing device model", this.component);
     return;
+  }
+
+  private async importModel(file: string) {
+    child.exec(`dmr-client import --model-file "${file}"`, (err, stdout, stderr) => {
+      this.outputChannel.info(stdout);
+      if (err) {
+        this.outputChannel.error(stderr);
+      }
+    });
+  }
+
+  private async validateModel() {
+    child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
+      console.log("stdout: " + stdout);
+      console.log("stderr: " + stderr);
+      if (err) {
+        console.log("error: " + err);
+      }
+    });
   }
 }
