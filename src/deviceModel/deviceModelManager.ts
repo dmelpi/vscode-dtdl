@@ -146,7 +146,11 @@ export class DeviceModelManager {
       vscode.workspace.openTextDocument(file.fsPath).then(document => {
         const text = document.getText();
         const json = JSON.parse(text);
-        this.outputChannel.info(json["@id"]);
+        if (!Array.isArray(json)) {
+          if (json["@id"].includes(`${boardName}:${firmwareName}`)) {
+            this.outputChannel.info(json["@id"]);
+          }
+        }
       });
     });
     this.outputChannel.end("Finalizing device model", this.component);
