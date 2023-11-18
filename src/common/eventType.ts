@@ -12,5 +12,6 @@ export enum EventType {
   AddTagsInterface = "vespucci-dtdl.addTagsInterface",
   AddMobileAppsInterface = "vespucci-dtdl.addMobileAppsInterface",
   AddOutputDataInterface = "vespucci-dtdl.addOutputDataInterface",
+  FinalizeDeviceModel = "vespucci-dtdl.finalizeDeviceModel",
   OpenModelFile = "openModelFile"
 }

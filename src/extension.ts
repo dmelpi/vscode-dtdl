@@ -136,10 +136,16 @@ export function activate(context: vscode.ExtensionContext): void {
       return deviceModelManager.addInterface("algorithm.json");
     }
   );
-}
 
-function createExpandedModel() {
-  console.log("Creating expanded model with dmr-client tool");
+  initCommand(
+    context,
+    telemetryClient,
+    outputChannel,
+    EventType.FinalizeDeviceModel,
+    async (): Promise<void> => {
+      return deviceModelManager.finalizeModel();
+    }
+  );
 }
 
 function validateModel() {

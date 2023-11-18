@@ -54,6 +54,11 @@
         "command": "vespucci-dtdl.addMobileAppInterface",
         "title": "Add Mobile App Interface",
         "category": "Vespucci DTDL"
+      },
+      {
+        "command": "vespucci-dtdl.finalizeDeviceModel",
+        "title": "Finalize Vespucci device model",
+        "category": "Vespucci DTDL"
       }
     ],
     "jsonValidation": [

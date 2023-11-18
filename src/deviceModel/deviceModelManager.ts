@@ -132,4 +132,24 @@ export class DeviceModelManager {
     await Utility.createFileFromTemplate(templatePath, filePath, replacement);
     return filePath;
   }
+
+  public async finalizeModel(): Promise<void> {
+    if (vscode.workspace.workspaceFolders === undefined) return;
+
+    //const wf = vscode.workspace.workspaceFolders[0].uri.path;
+    const files = await vscode.workspace.findFiles("**/*.json", "dtmi/**");
+    const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
+    const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    this.outputChannel.start("Finalizing device model", this.component);
+    this.outputChannel.info(`Board name: ${boardName}; firmware name: ${firmwareName}`);
+    files.forEach(file => {
+      vscode.workspace.openTextDocument(file.fsPath).then(document => {
+        const text = document.getText();
+        const json = JSON.parse(text);
+        this.outputChannel.info(json["@id"]);
+      });
+    });
+    this.outputChannel.end("Finalizing device model", this.component);
+    return;
+  }
 }
