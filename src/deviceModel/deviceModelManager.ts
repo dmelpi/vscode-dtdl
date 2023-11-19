@@ -143,20 +143,29 @@ export class DeviceModelManager {
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
     this.outputChannel.start("Finalizing device model", this.component);
     this.outputChannel.info(`Board name: ${boardName}; firmware name: ${firmwareName}`);
+    let mainFile = "";
     /* TODO: must import main template as the last one */
     files.forEach(file => {
       vscode.workspace.openTextDocument(file.fsPath).then(document => {
         const text = document.getText();
         const json = JSON.parse(text);
         if (!Array.isArray(json)) {
+          const id = json["@id"];
           // discard exported json files
-          if (json["@id"].includes(`${boardName}:${firmwareName}`)) {
-            this.outputChannel.info(json["@id"]);
-            this.importModel(folder, file.fsPath);
+          if (id.includes(`${boardName}:${firmwareName}`)) {
+            if (id.split(":").length === 4) {
+              mainFile = file.fsPath;
+              this.outputChannel.info(`Main model file: ${mainFile}`);
+            } else {
+              this.outputChannel.info(id);
+              this.importModel(folder, file.fsPath);
+            }
           }
         }
       });
     });
+    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 500));
+    this.importModel(folder, mainFile);
     this.outputChannel.end("Finalizing device model", this.component);
     return;
   }
@@ -166,7 +175,7 @@ export class DeviceModelManager {
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
     if (this.myStatusBarItem != undefined) {
       this.myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
-      this.myStatusBarItem.tooltip = `Current namespace is dtmi:appconfig:${boardName}:${firmwareName};1 \
+      this.myStatusBarItem.tooltip = `Current device model namespace is dtmi:appconfig:${boardName}:${firmwareName};1 \
 \nTo change it, create a new device model.`;
       this.myStatusBarItem?.show();
     }
@@ -181,13 +190,19 @@ export class DeviceModelManager {
     });
   }
 
-  private async validateModel() {
-    child.exec("dmr-client validate -m sdl.expanded.json", (err, stdout, stderr) => {
-      console.log("stdout: " + stdout);
-      console.log("stderr: " + stderr);
-      if (err) {
-        console.log("error: " + err);
+  private async exportModel(folder: string) {
+    const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
+    const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    child.exec(
+      `cd "${folder}" && dmr-client export --dtmi "dtmi:appconfig:${boardName}:${firmwareName};1" --repo . \
+      > ${boardName}_${firmwareName}.expanded.json`,
+      (err, stdout, stderr) => {
+        console.log("stdout: " + stdout);
+        console.log("stderr: " + stderr);
+        if (err) {
+          console.log("error: " + err);
+        }
       }
-    });
+    );
   }
 }
