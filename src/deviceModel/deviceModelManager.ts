@@ -79,7 +79,6 @@ export class DeviceModelManager {
     this.outputChannel.end(operation, this.component);
   }
 
-  //TODO make it parametric depending on interface type and select the appropriate template
   public async addInterface(interfaceType: string): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const template: string = path.join(
@@ -136,6 +135,7 @@ export class DeviceModelManager {
 
   public async finalizeModel(): Promise<void> {
     //if (vscode.workspace.workspaceFolders === undefined) return;
+    const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const files = await vscode.workspace.findFiles("**/*.json", "dtmi/**");
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
@@ -149,7 +149,7 @@ export class DeviceModelManager {
           // discard exported json files
           if (json["@id"].includes(`${boardName}:${firmwareName}`)) {
             this.outputChannel.info(json["@id"]);
-            this.importModel(file.fsPath);
+            this.importModel(folder, file.fsPath);
           }
         }
       });
@@ -158,8 +158,11 @@ export class DeviceModelManager {
     return;
   }
 
-  private async importModel(file: string) {
-    child.exec(`dmr-client import --model-file "${file}"`, (err, stdout, stderr) => {
+  private async importModel(folder: string, file: string) {
+    this.outputChannel.info(file);
+    this.outputChannel.info(folder);
+    child.exec(`cd "${folder}" && dmr-client import --model-file "${file}"`, (err, stdout, stderr) => {
+      //child.exec(`dir`, (err, stdout, stderr) => {
       this.outputChannel.info(stdout);
       if (err) {
         this.outputChannel.error(stderr);
