@@ -1,0 +1,8 @@
+{
+  "@type": "Component",
+  "name": "{interface_name}",
+  "displayName": { "en": "{interface_name}" },
+  "description": "Device model component",
+  "comment": "Components must be added to the top-level device model to reference needed interfaces",
+  "schema": "dtmi:appconfig:{board_name}:{firmware_name}:{interface_name}"
+}
