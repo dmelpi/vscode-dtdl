@@ -39,6 +39,8 @@ export class DeviceModelManager {
     return `${name}.json`;
   }
 
+  public myStatusBarItem: vscode.StatusBarItem | undefined;
+
   private readonly component: string;
   constructor(private readonly context: vscode.ExtensionContext, private readonly outputChannel: ColorizedChannel) {
     this.component = Constants.DEVICE_MODEL_COMPONENT;
@@ -156,6 +158,15 @@ export class DeviceModelManager {
     });
     this.outputChannel.end("Finalizing device model", this.component);
     return;
+  }
+
+  public async updateStatusBar() {
+    const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
+    const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    if (this.myStatusBarItem != undefined) {
+      this.myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
+      this.myStatusBarItem?.show();
+    }
   }
 
   private async importModel(folder: string, file: string) {
