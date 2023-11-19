@@ -1,5 +1,8 @@
 {
+  "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:appconfig:{board_name}:{firmware_name};1",
+  "name": "{firmware_name}",
+  "displayName": { "en": "{firmware_name" },
   "@type": "Interface",
   "contents": [
       {
@@ -7,18 +10,6 @@
           "displayName": { "en": "Component 1" },
           "name": "component1",
           "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component1;1"
-      },
-      {
-        "@type": "Component",
-        "displayName": { "en": "Component 2" },
-        "name": "component2",
-        "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component2;1"
-    },
-    {
-      "@type": "Component",
-      "displayName": { "en": "Component 3" },
-      "name": "component3",
-      "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component3;1"
-    }
+      }
   ]
 }
