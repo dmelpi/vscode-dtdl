@@ -60,6 +60,7 @@ export class DeviceModelManager {
     const templateFolder: string = this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER));
     const template = "device_model.json";
     const operation = `Create ${type} "${name}" in folder ${folder} by template "${template}"`;
+    this.updateStatusBar();
     this.outputChannel.start(operation, this.component);
 
     let filePath: string;
@@ -165,6 +166,8 @@ export class DeviceModelManager {
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
     if (this.myStatusBarItem != undefined) {
       this.myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
+      this.myStatusBarItem.tooltip = `Current namespace is dtmi:appconfig:${boardName}:${firmwareName};1 \
+\nTo change it, create a new device model.`;
       this.myStatusBarItem?.show();
     }
   }

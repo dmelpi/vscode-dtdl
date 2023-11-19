@@ -149,19 +149,8 @@ export function activate(context: vscode.ExtensionContext): void {
 
   deviceModelManager.myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   context.subscriptions.push(deviceModelManager.myStatusBarItem);
-  /*  const boardName: string = context.globalState.get<string>("dtdl-board") ?? "board";
-  const firmwareName = context.globalState.get<string>("dtdl-firmware") ?? "firmware";
-  myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
-  myStatusBarItem.show(); */
   deviceModelManager.updateStatusBar();
 }
-
-/* function updateStatusBar(context: vscode.ExtensionContext) {
-  const boardName: string = context.globalState.get<string>("dtdl-board") ?? "board";
-  const firmwareName = context.globalState.get<string>("dtdl-firmware") ?? "firmware";
-  myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
-  myStatusBarItem.show();
-} */
 
 export function deactivate(): Thenable<void> | undefined {
   if (!client) {
