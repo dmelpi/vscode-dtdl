@@ -1,8 +1,7 @@
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:appconfig:{board_name}:{firmware_name};1",
-  "name": "{firmware_name}",
-  "displayName": { "en": "{firmware_name" },
+  "displayName": { "en": "{firmware_name}" },
   "@type": "Interface",
   "contents": [
       {

@@ -79,8 +79,7 @@
           ],
           "valueSchema": "integer"
       },
-      "unit": "gForce",
       "writable": true
-  }
+    }
   ]
 }
