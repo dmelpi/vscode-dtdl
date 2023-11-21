@@ -70,5 +70,16 @@ export class Utility {
     });
   }
 
+  public static async readFile(filePath: string): Promise<unknown> {
+    return fs
+      .readJSON(filePath)
+      .then(obj => {
+        console.log(obj);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   private constructor() {}
 }

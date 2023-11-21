@@ -10,12 +10,19 @@ import { Utility } from "../common/utility";
 import { MessageType, UI } from "../view/ui";
 import { UIConstants } from "../view/uiConstants";
 import * as child from "child_process";
+import * as fs from "fs-extra";
 
 /**
  * DigitalTwin model type
  */
 export enum ModelType {
   Interface = "Interface"
+}
+
+interface dmComponent {
+  id: string;
+  file: string;
+  jsonContent?: JSON;
 }
 
 /**
@@ -144,7 +151,7 @@ export class DeviceModelManager {
     this.outputChannel.start("Finalizing device model", this.component);
     this.outputChannel.info(`Board name: ${boardName}; firmware name: ${firmwareName}`);
     let mainFile = "";
-    /* TODO: must import main template as the last one */
+    const ids: dmComponent[] = [];
     files.forEach(file => {
       vscode.workspace.openTextDocument(file.fsPath).then(document => {
         const text = document.getText();
@@ -154,18 +161,40 @@ export class DeviceModelManager {
           // discard exported json files
           if (id.includes(`${boardName}:${firmwareName}`)) {
             if (id.split(":").length === 4) {
+              /* the main model file must be processed as the last one */
               mainFile = file.fsPath;
               this.outputChannel.info(`Main model file: ${mainFile}`);
             } else {
               this.outputChannel.info(id);
               this.importModel(folder, file.fsPath);
+              ids.push({ id: id, file: file.fsPath });
             }
           }
         }
       });
     });
-    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 500));
+    /* we need to wait until all files have been written, otherwise the main model 
+    will not find them in the fs and an error will be generated, the current solution 
+    is ugly (a delay...) and should be implemented better with file watchers */
+    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 2000));
+    /* TODO: add components to main file before importing it */
+    fs.readJson(mainFile, (err, dm) => {
+      if (err) console.error(err);
+      dm.contents = [];
+      ids.forEach(comp => {
+        this.outputChannel.info(comp.id);
+        const name = comp.id
+          .split(":")
+          .pop()
+          ?.split(";")[0];
+        dm.contents.push({ "@type": "Component", name: name, schema: comp.id });
+      });
+      fs.writeJSON(mainFile, dm, { spaces: Constants.JSON_SPACE, encoding: Constants.UTF8 });
+    });
+
+    /* write back modified object to file and finally import it */
     this.importModel(folder, mainFile);
+    /* TODO export model */
     this.outputChannel.end("Finalizing device model", this.component);
     return;
   }
