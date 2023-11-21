@@ -20,6 +20,7 @@
         "@type": "Enum",
         "displayName": { "en": "Input buffer dimension "},
         "description": "Example of an input parameter that can only have a fixed value.",
+        "valueSchema": "integer",
         "enumValues": [
           {
             "displayName": { "en": "1024 bytes"},
@@ -48,6 +49,7 @@
                   "displayName": { "en": "Classifier output"},
                   "schema": {
                     "@type": "Enum",
+                    "valueSchema": "integer",
                     "enumValues": [
                       {
                         "displayName": { "en": "Class 1" },

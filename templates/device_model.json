@@ -3,12 +3,14 @@
   "@id": "dtmi:appconfig:{board_name}:{firmware_name};1",
   "displayName": { "en": "{firmware_name}" },
   "@type": "Interface",
+  "comment": "This is the main device model file",
   "contents": [
       {
           "@type": "Component",
           "displayName": { "en": "Component 1" },
           "name": "component1",
-          "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component1;1"
+          "comment": "This component is only a placeholder and it will be replaced when the full device model will be assembled by the vespucci dtdl extension",
+          "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component_category:interface_name;1"
       }
   ]
 }

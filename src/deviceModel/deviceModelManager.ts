@@ -187,14 +187,15 @@ export class DeviceModelManager {
           .split(":")
           .pop()
           ?.split(";")[0];
-        dm.contents.push({ "@type": "Component", name: name, schema: comp.id });
+        dm.contents.push({ "@type": "Component", name: name, displayName: { en: name }, schema: comp.id });
       });
       fs.writeJSON(mainFile, dm, { spaces: Constants.JSON_SPACE, encoding: Constants.UTF8 });
     });
 
-    /* write back modified object to file and finally import it */
     this.importModel(folder, mainFile);
     /* TODO export model */
+    await new Promise((resolve, reject) => setTimeout(() => resolve(true), 2000));
+    this.exportModel(folder);
     this.outputChannel.end("Finalizing device model", this.component);
     return;
   }
