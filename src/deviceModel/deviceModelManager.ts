@@ -120,22 +120,6 @@ export class DeviceModelManager {
     await UI.openAndShowTextDocument(filePath);
   }
 
-  /**
-   * create DigitalTwin model
-   * @param folder root folder
-   * @param name model name
-   * @param templatePath template file path
-   */
-  private async doCreateModel(folder: string, name: string, templatePath: string): Promise<string> {
-    const modelId: string = DeviceModelManager.generateModelId(name);
-    const filePath: string = path.join(folder, DeviceModelManager.generateModelFileName(name));
-    const replacement = new Map<string, string>();
-    replacement.set(Constants.MODEL_ID_PLACEHOLDER, modelId);
-    replacement.set(Constants.MODEL_NAME_PLACEHOLDER, name);
-    await Utility.createFileFromTemplate(templatePath, filePath, replacement);
-    return filePath;
-  }
-
   private async doCreateVespucciModel(
     folder: string,
     board: string,
