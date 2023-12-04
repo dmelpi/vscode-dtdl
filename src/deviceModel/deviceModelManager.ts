@@ -61,8 +61,10 @@ export class DeviceModelManager {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
     const boardName = await UI.showInputBox("Board name", "Board name");
     const firmwareName = await UI.showInputBox("Firmware name", "Firmware name");
+    const modelVersion = await UI.showInputBox("Model version", "Model version");
     await this.context.globalState.update("dtdl-board", boardName);
     await this.context.globalState.update("dtdl-firmware", firmwareName);
+    await this.context.globalState.update("dtdl-version", modelVersion);
     const name = `${boardName}:${firmwareName}`;
     const templateFolder: string = this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER));
     const template = "device_model.json";
@@ -77,6 +79,7 @@ export class DeviceModelManager {
         folder,
         boardName,
         firmwareName,
+        modelVersion,
         fileName,
         path.join(templateFolder, template)
       );
@@ -98,11 +101,19 @@ export class DeviceModelManager {
     const interfaceName = await UI.showInputBox("Interface name", "Interface name");
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    const modelVersion = this.context.globalState.get<string>("dtsl-version") ?? "1";
 
     const operation = `Create "${interfaceName}" in folder ${folder} by template "${template}"`;
     let filePath: string;
     try {
-      filePath = await this.doCreateVespucciModel(folder, boardName, firmwareName, interfaceName, template);
+      filePath = await this.doCreateVespucciModel(
+        folder,
+        boardName,
+        firmwareName,
+        modelVersion,
+        interfaceName,
+        template
+      );
     } catch (error) {
       throw new ProcessError(operation, error, this.component);
     }
@@ -129,6 +140,7 @@ export class DeviceModelManager {
     folder: string,
     board: string,
     firmware: string,
+    version: string,
     name: string,
     templatePath: string
   ): Promise<string> {
@@ -139,6 +151,7 @@ export class DeviceModelManager {
     replacement.set(Constants.MODEL_NAME_PLACEHOLDER, name);
     replacement.set(Constants.MODEL_BOARD_PLACEHOLDER, board);
     replacement.set(Constants.MODEL_FIRMWARE_PLACEHOLDER, firmware);
+    replacement.set(Constants.MODEL_VERSION_PLACEHOLDER, version);
     await Utility.createFileFromTemplate(templatePath, filePath, replacement);
     return filePath;
   }
@@ -203,10 +216,12 @@ export class DeviceModelManager {
   public async updateStatusBar() {
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    const modelVersion = this.context.globalState.get<string>("dtdl-version") ?? "1";
     if (this.myStatusBarItem != undefined) {
-      this.myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName}`;
-      this.myStatusBarItem.tooltip = `Current device model namespace is dtmi:appconfig:${boardName}:${firmwareName};1 \
-\nTo change it, create a new device model.`;
+      this.myStatusBarItem.text = `[Vespucci DTDL] ${boardName}:${firmwareName};${modelVersion}`;
+      this.myStatusBarItem.tooltip = `Current device model namespace is \
+      dtmi:appconfig:${boardName}:${firmwareName};${modelVersion} \
+      \nTo change it, create a new device model.`;
       this.myStatusBarItem?.show();
     }
   }

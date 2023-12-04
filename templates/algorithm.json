@@ -37,7 +37,7 @@
       "name": "algoOutput",
       "schema": {
           "@type": "Object",
-          "displayName": { "en": "Single acceleration sample." },
+          "displayName": { "en": "Neural Network Output" },
           "fields": [
               {
                   "name": "accuracy",

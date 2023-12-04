@@ -1,6 +1,6 @@
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:appconfig:{board_name}:{firmware_name};1",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name};{model_version}",
   "displayName": { "en": "{firmware_name}" },
   "@type": "Interface",
   "comment": "This is the main device model file",

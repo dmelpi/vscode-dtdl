@@ -22,6 +22,7 @@ export class Constants {
   public static readonly MODEL_NAME_PLACEHOLDER = "{interfaceName}";
   public static readonly MODEL_BOARD_PLACEHOLDER = "{board_name}";
   public static readonly MODEL_FIRMWARE_PLACEHOLDER = "{firmware_name}";
+  public static readonly MODEL_VERSION_PLACEHOLDER = "{model_version}";
 
   public static readonly EXTENSION_ACTIVATED_MSG = "extensionActivated";
   public static readonly NOT_EMPTY_MSG = "could not be empty";
