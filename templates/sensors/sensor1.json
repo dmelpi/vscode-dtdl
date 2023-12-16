@@ -2,8 +2,8 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:{interfaceName};1",
   "@type": "Interface",
-  "displayName": { "en": "Sensor" },
-  "description": "Example DTDL model for a single sensor.",
+  "displayName": { "en": "Sensor1" },
+  "description": "Sensor one",
   "contents": [
     {
       "@type": "Property",

@@ -1,0 +1,76 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
+  "@type": "Interface",
+  "displayName": { "en": "Algorithm 2" },
+  "description": "Algorithm two.",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Enabled" },
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "inputBufferDimension",
+      "displayName": { "en": "Input buffer dimension" },
+      "schema": {
+        "@type": "Enum",
+        "displayName": { "en": "Input buffer dimension "},
+        "description": "Example of an input parameter that can only have a fixed value.",
+        "valueSchema": "integer",
+        "enumValues": [
+          {
+            "displayName": { "en": "1024 bytes"},
+            "enumValue": 1024,
+            "name": "b1024"
+          }
+        ]
+      },
+      "writable": false
+    },
+    {
+      "@type": "Telemetry",
+      "displayName": { "en": "Algorithm output" },
+      "name": "algoOutput",
+      "schema": {
+          "@type": "Object",
+          "displayName": { "en": "Neural Network Output" },
+          "fields": [
+              {
+                  "name": "accuracy",
+                  "displayName": { "en": "Accuracy [0-1]" },
+                  "schema": "double"
+              },
+              {
+                  "name": "class",
+                  "displayName": { "en": "Classifier output"},
+                  "schema": {
+                    "@type": "Enum",
+                    "valueSchema": "integer",
+                    "enumValues": [
+                      {
+                        "displayName": { "en": "Class 1" },
+                        "enumValue": 0,
+                        "name": "class1"
+                      },
+                      {
+                        "displayName": { "en": "Class 2" },
+                        "enumValue": 1,
+                        "name": "class2"
+                      },
+                      {
+                        "displayName": { "en": "Class 3" },
+                        "enumValue": 2,
+                        "name": "class3"
+                      }
+                    ]
+                  }
+              }
+          ]
+      }
+    }
+  ]
+}

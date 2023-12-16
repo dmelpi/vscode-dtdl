@@ -12,9 +12,6 @@ import { UIConstants } from "../view/uiConstants";
 import * as child from "child_process";
 import * as fs from "fs-extra";
 
-/**
- * DigitalTwin model type
- */
 export enum ModelType {
   Interface = "Interface"
 }
@@ -25,9 +22,6 @@ interface dmComponent {
   jsonContent?: JSON;
 }
 
-/**
- * DigitalTwin device model manager
- */
 export class DeviceModelManager {
   /**
    * generate DigitalTwin model id
@@ -94,14 +88,18 @@ export class DeviceModelManager {
 
   public async addInterface(interfaceType: string): Promise<void> {
     const folder: string = await UI.selectRootFolder(UIConstants.SELECT_ROOT_FOLDER_LABEL);
-    const template: string = path.join(
+    const templateFolder: string = path.join(
       this.context.asAbsolutePath(path.join(Constants.TEMPLATE_FOLDER)),
       interfaceType
     );
     const interfaceName = await UI.showInputBox("Interface name", "Interface name");
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
-    const modelVersion = this.context.globalState.get<string>("dtsl-version") ?? "1";
+    const modelVersion = this.context.globalState.get<string>("dtdl-version") ?? "1";
+
+    const template: string = await UI.selectTemplateFile(UIConstants.SELECT_TEMPLATE_FILE_LABEL, templateFolder);
+
+    const templatePath = path.join(templateFolder, template);
 
     const operation = `Create "${interfaceName}" in folder ${folder} by template "${template}"`;
     let filePath: string;
@@ -112,7 +110,7 @@ export class DeviceModelManager {
         firmwareName,
         modelVersion,
         interfaceName,
-        template
+        templatePath
       );
     } catch (error) {
       throw new ProcessError(operation, error, this.component);
@@ -222,9 +220,10 @@ export class DeviceModelManager {
   private async exportModel(folder: string) {
     const boardName: string = this.context.globalState.get<string>("dtdl-board") ?? "board";
     const firmwareName = this.context.globalState.get<string>("dtdl-firmware") ?? "firmware";
+    const modelVersion = this.context.globalState.get<string>("dtdl-version") ?? "1";
     child.exec(
-      `cd "${folder}" && dmr-client export --dtmi "dtmi:appconfig:${boardName}:${firmwareName};1" --repo . \
-      > ${boardName}_${firmwareName}.expanded.json`,
+      `cd "${folder}" && dmr-client export --dtmi "dtmi:appconfig:${boardName}:${firmwareName};${modelVersion}" \
+      --repo . > ${boardName}_${firmwareName}.expanded.json`,
       (err, stdout, stderr) => {
         console.log("stdout: " + stdout);
         console.log("stderr: " + stderr);
