@@ -47,7 +47,7 @@
       },
       {
         "command": "vespucci-dtdl.addControllerInterface",
-        "title": "Add Firmware Interface",
+        "title": "Add Controller Interface",
         "category": "Vespucci DTDL"
       },
       {

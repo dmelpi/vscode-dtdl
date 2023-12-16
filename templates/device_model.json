@@ -7,8 +7,8 @@
   "contents": [
       {
           "@type": "Component",
-          "displayName": { "en": "Component 1" },
-          "name": "component1",
+          "displayName": { "en": "Component placeholder" },
+          "name": "component",
           "comment": "This component is only a placeholder and it will be replaced when the full device model will be assembled by the vespucci dtdl extension",
           "schema": "dtmi:appconfig:{board_name}:{firmware_name}:component_category:interface_name;1"
       }
