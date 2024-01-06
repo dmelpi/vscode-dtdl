@@ -1,0 +1,153 @@
+{
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag;3",
+  "@type": "Interface",
+  "comment": "This interface was copied from Vespucci IoTC app and modified, some datalog related properties removed, see also comments below",
+  "contents": [
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr;1",
+          "@type": "Property",
+          "displayName": {
+              "en": "ODR"
+          },
+          "name": "odr",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr:schema;1",
+              "@type": "Enum",
+              "displayName": {
+                  "en": "Enum"
+              },
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr:schema:hz10;1",
+                      "displayName": {
+                          "en": "10"
+                      },
+                      "enumValue": 0,
+                      "name": "hz10"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr:schema:hz20;1",
+                      "displayName": {
+                          "en": "20"
+                      },
+                      "enumValue": 1,
+                      "name": "hz20"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr:schema:hz50;1",
+                      "displayName": {
+                          "en": "50"
+                      },
+                      "enumValue": 2,
+                      "name": "hz50"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr:schema:hz100;1",
+                      "displayName": {
+                          "en": "100"
+                      },
+                      "enumValue": 3,
+                      "name": "hz100"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "unit": "hertz",
+          "writable": true
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:fs;1",
+          "@type": "Property",
+          "displayName": {
+              "en": "FS"
+          },
+          "name": "fs",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:fs:schema;1",
+              "@type": "Enum",
+              "displayName": {
+                  "en": "Enum"
+              },
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:fs:schema:g50;1",
+                      "displayName": {
+                          "en": "50"
+                      },
+                      "enumValue": 0,
+                      "name": "g50"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "writable": false,
+          "displayUnit": {
+              "en": "gauss"
+          }
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:enable;1",
+          "@type": [
+              "Property",
+              "BooleanValue"
+          ],
+          "displayName": {
+              "en": "Enabled"
+          },
+          "name": "enable",
+          "schema": "boolean",
+          "writable": true
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:sensitivity;1",
+          "@type": [
+              "Property",
+              "NumberValue"
+          ],
+          "displayName": {
+              "en": "Sensitivity"
+          },
+          "name": "sensitivity",
+          "schema": "double",
+          "writable": false
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:sensor_annotation;1",
+          "@type": [
+              "Property",
+              "StringValue"
+          ],
+          "displayName": {
+              "en": "Sensor Annotation"
+          },
+          "name": "sensor_annotation",
+          "comment": "what is this property and how is it used?",
+          "schema": "string",
+          "writable": true
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:sensor_category;1",
+          "@type": [
+              "Property",
+              "NumberValue"
+          ],
+          "description": {
+              "en": "0 = ISENSOR_CLASS_MEMS"
+          },
+          "displayName": {
+              "en": "Sensor Category"
+          },
+          "name": "sensor_category",
+          "comment": "what is this property and how is it used?",
+          "schema": "integer",
+          "writable": false
+      }
+  ],
+  "displayName": {
+      "en": "LIS2MDL_MAG"
+  },
+  "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+  ]
+}

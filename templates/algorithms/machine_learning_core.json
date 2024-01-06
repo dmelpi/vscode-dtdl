@@ -4,6 +4,7 @@
   "@type": "Interface",
   "displayName": { "en": "Machine Learning Core" },
   "description": "MLC component.",
+  "comment": "",
   "contents": [
     {
       "@type": "Property",
@@ -14,22 +15,10 @@
     },
     {
       "@type": "Property",
-      "name": "inputBufferDimension",
-      "displayName": { "en": "Input buffer dimension" },
-      "comment": "This property can be used to indicate the input buffer dimension that the NN accepts",
-      "schema": {
-        "@type": "Enum",
-        "displayName": { "en": "Input buffer dimension "},
-        "description": "Example of an input parameter that can only have a fixed value.",
-        "valueSchema": "integer",
-        "enumValues": [
-          {
-            "displayName": { "en": "1024 bytes"},
-            "enumValue": 1024,
-            "name": "b1024"
-          }
-        ]
-      },
+      "name": "configFile",
+      "displayName": { "en": "MLC configuration (.ucf)" },
+      "comment": "",
+      "schema": "string",
       "writable": false
     },
     {

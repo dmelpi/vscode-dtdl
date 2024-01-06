@@ -1,0 +1,86 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:{interfaceName};1",
+  "@type": "Interface",
+  "comment": "to be completed",
+  "displayName": { "en": "PDETECT1 expansion board" },
+  "description": "Expansion board for STWINBX1 with ToF, TMOS and ALS sensors",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Enabled" },
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Telemetry",
+      "name": "temperature",
+      "displayName": { "en": "Temperature" },
+      "schema": "double"
+    },
+    {
+      "@type": "Telemetry",
+      "displayName": { "en": "Acceleration Value {x, y, z} [mg]" },
+      "name": "acceleration",
+      "schema": {
+          "@type": "Object",
+          "displayName": { "en": "Single acceleration sample." },
+          "fields": [
+              {
+                  "name": "a_x",
+                  "schema": "double"
+              },
+              {
+                  "name": "a_y",
+                  "schema": "double"
+              },
+              {
+                  "name": "a_z",
+                  "schema": "double"
+              }
+          ]
+      }
+  },
+    {
+      "@type": "Property",
+      "name": "samplingFrequency",
+      "displayName": { "en": "Sampling frequency [Hz]" },
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "displayName": { "en": "FS" },
+      "name": "fs",
+      "schema": {
+          "@type": "Enum",
+          "displayName": { "en": "Enum" },
+          "enumValues": [
+              {
+                  "displayName": { "en": "+/- 2g" },
+                  "enumValue": 0,
+                  "name": "g2"
+              },
+              {
+                  "displayName": { "en": "+/- 4g" },
+                  "enumValue": 1,
+                  "name": "g4"
+              },
+              {
+                  "displayName": { "en": "+/- 8g" },
+                  "enumValue": 2,
+                  "name": "g8"
+              },
+              {
+                  "displayName": { "en": "+/- 16g" },
+                  "enumValue": 3,
+                  "name": "g16"
+              }
+          ],
+          "valueSchema": "integer"
+      },
+      "writable": true
+    }
+  ]
+}
