@@ -1,0 +1,35 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
+  "@type": "Interface",
+  "displayName": { "en": "MFCC" },
+  "description": "MFCC algorithm.",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Enabled" },
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "inputBufferDimension",
+      "displayName": { "en": "Input buffer dimension" },
+      "schema": {
+        "@type": "Enum",
+        "displayName": { "en": "Input buffer dimension "},
+        "description": "Example of an input parameter that can only have a fixed value.",
+        "valueSchema": "integer",
+        "enumValues": [
+          {
+            "displayName": { "en": "1024 bytes"},
+            "enumValue": 1024,
+            "name": "b1024"
+          }
+        ]
+      },
+      "writable": false
+    }
+  ]
+}

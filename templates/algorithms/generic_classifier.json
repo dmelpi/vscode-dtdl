@@ -2,8 +2,8 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
   "@type": "Interface",
-  "displayName": { "en": "Algorithm 1" },
-  "description": "Algorithm one.",
+  "displayName": { "en": "Classifier" },
+  "description": "Generic classifier algorithm. Output classes to be changed as needed.",
   "contents": [
     {
       "@type": "Property",

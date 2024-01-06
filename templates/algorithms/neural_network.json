@@ -2,8 +2,8 @@
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
   "@type": "Interface",
-  "displayName": { "en": "Algorithm 2" },
-  "description": "Algorithm two.",
+  "displayName": { "en": "Neural Network" },
+  "description": "Neural Network Component describing input and output. Output classes to be changed as needed.",
   "contents": [
     {
       "@type": "Property",
@@ -16,6 +16,7 @@
       "@type": "Property",
       "name": "inputBufferDimension",
       "displayName": { "en": "Input buffer dimension" },
+      "comment": "This property can be used to indicate the input buffer dimension that the NN accepts",
       "schema": {
         "@type": "Enum",
         "displayName": { "en": "Input buffer dimension "},
@@ -33,8 +34,8 @@
     },
     {
       "@type": "Telemetry",
-      "displayName": { "en": "Algorithm output" },
-      "name": "algoOutput",
+      "displayName": { "en": "Neural Network output" },
+      "name": "nnOutput",
       "schema": {
           "@type": "Object",
           "displayName": { "en": "Neural Network Output" },
