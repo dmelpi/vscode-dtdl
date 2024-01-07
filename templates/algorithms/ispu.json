@@ -1,0 +1,66 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
+  "@type": "Interface",
+  "displayName": { "en": "ISPU" },
+  "description": "ISPU component.",
+  "comment": "",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Enabled" },
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "configFile",
+      "displayName": { "en": "ISPU configuration (.ucf)" },
+      "comment": "",
+      "schema": "string",
+      "writable": false
+    },
+    {
+      "@type": "Telemetry",
+      "displayName": { "en": "ISPU output" },
+      "name": "ispuOutput",
+      "schema": {
+          "@type": "Object",
+          "displayName": { "en": "ISPU Output" },
+          "fields": [
+              {
+                  "name": "accuracy",
+                  "displayName": { "en": "Accuracy [0-1]" },
+                  "schema": "double"
+              },
+              {
+                  "name": "class",
+                  "displayName": { "en": "Classifier output"},
+                  "schema": {
+                    "@type": "Enum",
+                    "valueSchema": "integer",
+                    "enumValues": [
+                      {
+                        "displayName": { "en": "Class 1" },
+                        "enumValue": 0,
+                        "name": "class1"
+                      },
+                      {
+                        "displayName": { "en": "Class 2" },
+                        "enumValue": 1,
+                        "name": "class2"
+                      },
+                      {
+                        "displayName": { "en": "Class 3" },
+                        "enumValue": 2,
+                        "name": "class3"
+                      }
+                    ]
+                  }
+              }
+          ]
+      }
+    }
+  ]
+}

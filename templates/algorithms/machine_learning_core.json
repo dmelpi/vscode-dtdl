@@ -4,7 +4,7 @@
   "@type": "Interface",
   "displayName": { "en": "Machine Learning Core" },
   "description": "MLC component.",
-  "comment": "",
+  "comment": "abstract view, not sure we capture DT's and filter config yet ",
   "contents": [
     {
       "@type": "Property",
@@ -22,45 +22,73 @@
       "writable": false
     },
     {
+      "@type": "Property",
+      "name": "ucf_status",
+      "displayName": { "en": "UCF status" },
+      "schema": "boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "hwComponent",
+      "displayName": { "en": "Hardware component" },
+      "comment": "",
+      "schema": {
+        "@type": "Enum",
+        "valueSchema": "string",
+        "enumValues": [
+          "asm330lhhx",
+          "asm330lhhxg1",
+          "iis2iclx",
+          "ism330dhcx",
+          "lis2dux12",
+          "lisduxs12",
+          "lsm6dso32x",
+          "lsm6dsox",
+          "lsm6dsrx",
+          "lsm6dsv16bx",
+          "lsm6dsv16x"
+        ]
+      },
+      "writable": false
+    },
+    {
       "@type": "Telemetry",
       "displayName": { "en": "MLC output" },
-      "name": "nnOutput",
+      "name": "mlcOutput",
+      "comment": "Tennis example: <MLC0_SRC>DT1,0='backhand',4='forehand',8='serve',12='slice_backhand',14='slice_forehand'",
       "schema": {
-          "@type": "Object",
-          "displayName": { "en": "MLC Output" },
-          "fields": [
-              {
-                  "name": "accuracy",
-                  "displayName": { "en": "Accuracy [0-1]" },
-                  "schema": "double"
-              },
-              {
-                  "name": "class",
-                  "displayName": { "en": "Classifier output"},
-                  "schema": {
-                    "@type": "Enum",
-                    "valueSchema": "integer",
-                    "enumValues": [
-                      {
-                        "displayName": { "en": "Class 1" },
-                        "enumValue": 0,
-                        "name": "class1"
-                      },
-                      {
-                        "displayName": { "en": "Class 2" },
-                        "enumValue": 1,
-                        "name": "class2"
-                      },
-                      {
-                        "displayName": { "en": "Class 3" },
-                        "enumValue": 2,
-                        "name": "class3"
-                      }
-                    ]
-                  }
-              }
+          "@type": "Enum",
+          "valueSchema": "integer",
+          "enumValues": [
+            {
+              "displayName": { "en": "Back Hand" },
+              "enumValue": 0,
+              "name": "backhand"
+            },
+            {
+              "displayName": { "en": "Fore Hand" },
+              "enumValue": 4,
+              "name": "forehand"
+            },
+            {
+              "displayName": { "en": "Serve" },
+              "enumValue": 8,
+              "name": "serve"
+            },
+            {
+              "displayName": { "en": "Slice Back Hand" },
+              "enumValue": 12,
+              "name": "slice_backhand"
+            },
+            {
+              "displayName": { "en": "Slice Fore Hand" },
+              "enumValue": 14,
+              "name": "slice_forehand"
+            }
           ]
+        }
       }
-    }
-  ]
+    ]
 }
+  

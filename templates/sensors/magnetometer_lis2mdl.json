@@ -2,6 +2,7 @@
   "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag;3",
   "@type": "Interface",
   "comment": "This interface was copied from Vespucci IoTC app and modified, some datalog related properties removed, see also comments below",
+  "description": "3 axes magnetometer.",
   "contents": [
       {
           "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:lis2mdl_mag:odr;1",
