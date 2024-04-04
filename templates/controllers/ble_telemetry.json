@@ -1,0 +1,83 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:ble_telemetry:{interfaceName};1",
+  "@type": "Interface",
+  "displayName": { "en": "BLE Telemetry" },
+  "description": "Configuration of the raw PnPL BLE characteristic.",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "enabled",
+      "displayName": { "en": "Output Enabled" },
+      "schema": "boolean",
+      "writable": true,
+      "initialValue": false
+    },
+    {
+      "@type": "Telemetry",
+      "name": ""
+    },
+    {
+      "@type": "Property",
+      "name": "st_ble_stream",
+      "displayName": { "en": "BLE stream output coding configuration" },
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "stream_id",
+            "displayName": { "en": "Stream Identifier"},
+            "schema": "integer",
+            "comment": "must be 1 byte"
+          },
+          {
+            "name": "timestamp",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "@type": "SchemaField",
+                  "name": "enable",
+                  "schema": "boolean"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "format",
+                  "schema": "string",
+                  "initialValue": "uint32"
+                }
+              ]
+            }
+          },
+          {
+            "name": "samples",
+            "comment": "vector of 20 samples, each one coded with 16 bits (was 12 before)",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "@type": "SchemaField",
+                  "name": "enable",
+                  "schema": "boolean"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "format",
+                  "schema": "string",
+                  "initialValue": "uint16"
+                },
+                {
+                  "@type": "SchemaField",
+                  "name": "num_elements",
+                  "schema": "integer",
+                  "initialValue": 20
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "writable": true
+    }
+  ]
+}

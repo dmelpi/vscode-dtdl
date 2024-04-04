@@ -1,0 +1,165 @@
+{
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc;1",
+  "@type": "Interface",
+  "comment": "Copied from vespucci iotc app and modified",
+  "contents": [
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr;1",
+          "@type": [
+              "Property",
+              "Initialized"
+          ],
+          "displayName": { "en": "ODR" },
+          "name": "odr",
+          "description": "Output Data Rate",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema;1",
+              "@type": "Enum",
+              "displayName": {
+                  "en": "Enum"
+              },
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz12_5;1",
+                      "displayName": { "en": "12.5" },
+                      "enumValue": 0,
+                      "name": "hz12_5"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz26;1",
+                      "displayName": { "en": "26" },
+                      "enumValue": 1,
+                      "name": "hz26"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz52;1",
+                      "displayName": { "en": "52" },
+                      "enumValue": 2,
+                      "name": "hz52"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz104;1",
+                      "displayName": { "en": "104" },
+                      "enumValue": 3,
+                      "name": "hz104"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz208;1",
+                      "displayName": { "en": "208" },
+                      "enumValue": 4,
+                      "name": "hz208"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz416;1",
+                      "displayName": { "en": "416" },
+                      "enumValue": 5,
+                      "name": "hz416"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz833;1",
+                      "displayName": { "en": "833" },
+                      "enumValue": 6,
+                      "name": "hz833"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz1666;1",
+                      "displayName": { "en": "1666" },
+                      "enumValue": 7,
+                      "name": "hz1666"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz3332;1",
+                      "displayName": { "en": "3332" },
+                      "enumValue": 8,
+                      "name": "hz3332"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:odr:schema:hz6667;1",
+                      "displayName": { "en": "6667" },
+                      "enumValue": 9,
+                      "name": "hz6667"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "unit": "hertz",
+          "writable": true,
+          "initialValue": 9
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs;1",
+          "@type": [
+              "Property",
+              "Initialized"
+          ],
+          "displayName": {
+              "en": "FS"
+          },
+          "name": "fs",
+          "description": "Full Scale.",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs:schema;1",
+              "@type": "Enum",
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs:schema:g2;1",
+                      "displayName": { "en": "+/- 2g" },
+                      "enumValue": 0,
+                      "name": "g2"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs:schema:g4;1",
+                      "displayName": { "en": "+/- 4g" },
+                      "enumValue": 1,
+                      "name": "g4"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs:schema:g8;1",
+                      "displayName": { "en": "+/- 8g" },
+                      "enumValue": 2,
+                      "name": "g8"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:fs:schema:g16;1",
+                      "displayName": { "en": "+/- 16g" },
+                      "enumValue": 3,
+                      "name": "g16"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "unit": "gForce",
+          "writable": true,
+          "initialValue": 3
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:enable;1",
+          "@type": [
+              "Property",
+              "BooleanValue",
+              "Initialized"
+          ],
+          "displayName": { "en": "Enabled" },
+          "name": "enable",
+          "schema": "boolean",
+          "writable": true,
+          "initialValue": true
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_acc:sensitivity;1",
+          "@type": [
+              "Property",
+              "NumberValue"
+          ],
+          "displayName": { "en": "Sensitivity" },
+          "name": "sensitivity",
+          "schema": "double",
+          "writable": false
+      }
+  ],
+  "displayName": { "en": "ISM330DHCX_ACC" },
+  "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+  ]
+}

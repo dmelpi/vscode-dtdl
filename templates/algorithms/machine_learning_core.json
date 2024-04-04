@@ -3,7 +3,7 @@
   "@id": "dtmi:appconfig:{board_name}:{firmware_name}:algorithms:{interfaceName};1",
   "@type": "Interface",
   "displayName": { "en": "Machine Learning Core" },
-  "description": "MLC component.",
+  "description": "MLC component interface.",
   "comment": "abstract view, not sure we capture DT's and filter config yet ",
   "contents": [
     {
@@ -32,24 +32,9 @@
       "@type": "Property",
       "name": "hwComponent",
       "displayName": { "en": "Hardware component" },
-      "comment": "",
-      "schema": {
-        "@type": "Enum",
-        "valueSchema": "string",
-        "enumValues": [
-          "asm330lhhx",
-          "asm330lhhxg1",
-          "iis2iclx",
-          "ism330dhcx",
-          "lis2dux12",
-          "lisduxs12",
-          "lsm6dso32x",
-          "lsm6dsox",
-          "lsm6dsrx",
-          "lsm6dsv16bx",
-          "lsm6dsv16x"
-        ]
-      },
+      "description": "The part number of the HW component that embeds MLC.",
+      "comment": "left as a generic string to be filled in by firmware, e.g. ISM330DHCX",
+      "schema": "string",
       "writable": false
     },
     {

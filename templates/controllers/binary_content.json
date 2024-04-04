@@ -1,0 +1,40 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:binary_content:{interfaceName};1",
+  "@type": "Interface",
+  "displayName": { "en": "Binary content controller" },
+  "description": "Binary transfers over BLE",
+  "contents": [
+    {
+      "@type": "Command",
+      "name": "start",
+      "request": {
+        "@type": "CommandPayload",
+        "displayName": { "en": "transfer type" },
+        "description": "the type of data that will be transferred over the binary content characteristic",
+        "name": "xfer_type",
+        "schema": {
+            "@type": "Enum",
+            "enumValues": [
+                {
+                    "displayName": { "en": "ucf" },
+                    "enumValue": 0,
+                    "name": "ucf"
+                },
+                {
+                    "displayName": { "en": "program" },
+                    "enumValue": 1,
+                    "name": "program"
+                },
+                {
+                  "displayName": { "en": "data" },
+                  "enumValue": 2,
+                  "name": "data"
+              }
+            ],
+            "valueSchema": "integer"
+        }
+      }
+    }
+  ]
+}

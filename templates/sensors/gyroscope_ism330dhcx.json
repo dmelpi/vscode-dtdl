@@ -1,0 +1,175 @@
+{
+  "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro;1",
+  "@type": "Interface",
+  "contents": [
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr;1",
+          "@type": [
+              "Property",
+              "Initialized"
+          ],
+          "displayName": { "en": "ODR" },
+          "name": "odr",
+          "description": "Output Data Rate",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema;1",
+              "@type": "Enum",
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz12_5;1",
+                      "displayName": { "en": "12.5" },
+                      "enumValue": 0,
+                      "name": "hz12_5"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz26;1",
+                      "displayName": { "en": "26" },
+                      "enumValue": 1,
+                      "name": "hz26"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz52;1",
+                      "displayName": { "en": "52" },
+                      "enumValue": 2,
+                      "name": "hz52"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz104;1",
+                      "displayName": { "en": "104" },
+                      "enumValue": 3,
+                      "name": "hz104"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz208;1",
+                      "displayName": { "en": "208" },
+                      "enumValue": 4,
+                      "name": "hz208"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz416;1",
+                      "displayName": { "en": "416" },
+                      "enumValue": 5,
+                      "name": "hz416"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz833;1",
+                      "displayName": { "en": "833" },
+                      "enumValue": 6,
+                      "name": "hz833"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz1666;1",
+                      "displayName": { "en": "1666" },
+                      "enumValue": 7,
+                      "name": "hz1666"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz3332;1",
+                      "displayName": { "en": "3332" },
+                      "enumValue": 8,
+                      "name": "hz3332"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:odr:schema:hz6667;1",
+                      "displayName": { "en": "6667" },
+                      "enumValue": 9,
+                      "name": "hz6667"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "unit": "hertz",
+          "writable": true,
+          "initialValue": 9
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs;1",
+          "@type": [
+              "Property",
+              "Initialized"
+          ],
+          "displayName": {
+              "en": "FS"
+          },
+          "name": "fs",
+          "description": "Full Scale.",
+          "schema": {
+              "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema;1",
+              "@type": "Enum",
+              "enumValues": [
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps125;1",
+                      "displayName": { "en": "125" },
+                      "enumValue": 0,
+                      "name": "dps125"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps250;1",
+                      "displayName": { "en": "250" },
+                      "enumValue": 1,
+                      "name": "dps250"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps500;1",
+                      "displayName": { "en": "500" },
+                      "enumValue": 2,
+                      "name": "dps500"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps1000;1",
+                      "displayName": { "en": "1000" },
+                      "enumValue": 3,
+                      "name": "dps1000"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps2000;1",
+                      "displayName": { "en": "2000" },
+                      "enumValue": 4,
+                      "name": "dps2000"
+                  },
+                  {
+                      "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:fs:schema:dps4000;1",
+                      "displayName": { "en": "4000" },
+                      "enumValue": 5,
+                      "name": "dps4000"
+                  }
+              ],
+              "valueSchema": "integer"
+          },
+          "writable": true,
+          "displayUnit": { "en": "mdps" },
+          "initialValue": 5
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:enable;1",
+          "@type": [
+              "Property",
+              "BooleanValue",
+              "Initialized"
+          ],
+          "displayName": { "en": "Enabled" },
+          "name": "enable",
+          "schema": "boolean",
+          "writable": true,
+          "initialValue": true
+      },
+      {
+          "@id": "dtmi:appconfig:{board_name}:{firmware_name}:sensors:ism330dhcx_gyro:sensitivity;1",
+          "@type": [
+              "Property",
+              "NumberValue"
+          ],
+          "displayName": { "en": "Sensitivity" },
+          "name": "sensitivity",
+          "schema": "double",
+          "writable": false
+      }
+  ],
+  "displayName": {
+      "en": "ISM330DHCX_GYRO"
+  },
+  "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+  ]
+}
